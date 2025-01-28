@@ -8,6 +8,13 @@
     <title>Crud</title>
   </head>
   <body>
-    <h1></h1>
+    <main>
+        <form action="user.php" method="post ">
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+            </div>
+        </form>
+    </main>
   </body>
 </html>
