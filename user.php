@@ -6,6 +6,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
     $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL) ?? null;
     $mobile = filter_input(INPUT_POST, 'mobile', FILTER_SANITIZE_NUMBER_INT) ?? null;
     $password = $_POST['password'] ?? null;
+    $confirmPassword = $_POST['confirmPassword'] ?? null;
 }
 ?>
 
