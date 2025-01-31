@@ -87,7 +87,20 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
                     <label for="mobile" class="form-label">Mobile: </label>
                     <input type="number" class="form-control" id="mobile" placeholder="Enter Mobile" name="mobile">
                 </div>
-
+                <?php
+                    if($emailAlreadyExist) {
+                        echo '
+                            <p style="color: red;" id="errorMessage"><i><strong>Email</strong> already exist!</i></p>
+                            
+                            <script>
+                                let alertElement = document.getElementById("errorMessage");
+                                setTimeout(function() {
+                                    alertElement.style.display = "none"
+                                }, 3500);
+                            </script>
+                        ';
+                    }
+                ?>
                 <div class="mb-3">
                     <label for="email" class="form-label">Email address: </label>
                     <input type="email" class="form-control" id="email" placeholder="Enter Email Address" name="email">
