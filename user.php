@@ -7,6 +7,14 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
     $mobile = filter_input(INPUT_POST, 'mobile', FILTER_SANITIZE_NUMBER_INT) ?? null;
     $password = $_POST['password'] ?? null;
     $confirmPassword = $_POST['confirmPassword'] ?? null;
+
+    $sqlStatement = $conn->prepare("
+        SELECT name, mobile, email, password WHERE email = ? 
+    ");
+    $sqlStatement->bind_param("s", $email);
+    $sqlStatement->execute();
+    
+    $result = $sqlStatement->get_result();
 }
 ?>
 
