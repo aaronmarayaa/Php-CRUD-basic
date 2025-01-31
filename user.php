@@ -80,12 +80,12 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
             <form action="user.php" method="post">
                 <div class="mb-3">
                     <label for="name" class="form-label">Name: </label>
-                    <input type="text" class="form-control" id="name" placeholder="Enter Name" name="name">
+                    <input type="text" class="form-control" id="name" placeholder="Enter Name" name="name" required min="5">
                 </div>
 
                 <div class="mb-3">
                     <label for="mobile" class="form-label">Mobile: </label>
-                    <input type="number" class="form-control" id="mobile" placeholder="Enter Mobile" name="mobile">
+                    <input type="number" class="form-control" id="mobile" placeholder="Enter Mobile" name="mobile" required min="11" max="11">
                 </div>
                 <?php
                     if($emailAlreadyExist) {
@@ -103,7 +103,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
                 ?>
                 <div class="mb-3">
                     <label for="email" class="form-label">Email address: </label>
-                    <input type="email" class="form-control" id="email" placeholder="Enter Email Address" name="email">
+                    <input type="email" class="form-control" id="email" placeholder="Enter Email Address" name="email" required>
                 </div>
 
                 <?php
@@ -122,11 +122,11 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
                 ?>
                 <div class="mb-3">
                     <label for="password" class="form-label">Password: </label>
-                    <input type="password" class="form-control" id="password" placeholder="Enter Password" name="password">
+                    <input type="password" class="form-control" id="password" placeholder="Enter Password" name="password" required min="8">
                 </div>
                 <div class="mb-3">
                     <label for="confirmPassword" class="form-label">Confirm Password: </label>
-                    <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password" name="confirmPassword">
+                    <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password" name="confirmPassword" required min="8">
                 </div>
 
                 <div class="text-center">
