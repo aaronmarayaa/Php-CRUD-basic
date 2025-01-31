@@ -58,6 +58,22 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
 
     <title>Crud</title>
   </head>
+  <?php
+    if($isSuccessful) {
+        echo '
+            <div class="alert alert-success fade" role="alert" id="successAlert">
+                Signed Up Successfully!
+            </div>
+
+            <script>
+                let alertElement = document.getElementById("successAlert");
+                setTimeout(function() {
+                    alertElement.style.display = "none"
+                }, 3500);
+            </script>
+        ';
+    }
+  ?>
   <body>
     <main class="d-flex justify-content-center m-4">
         <div class="card w-50 p-4">
