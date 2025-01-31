@@ -106,11 +106,24 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
                     <input type="email" class="form-control" id="email" placeholder="Enter Email Address" name="email">
                 </div>
 
+                <?php
+                    if($passwordMismatch) {
+                        echo '
+                            <p style="color: red;" id="errorMessage"><i><strong>Password</strong> didn\'t match!</i></p>
+
+                            <script>
+                                let alertMessage = document.getElementById("errorMessage");
+                                setTimeout(function() {
+                                    alertMessage.style.display = "none";
+                                }, 3500);
+                            </script>
+                        ';
+                    }
+                ?>
                 <div class="mb-3">
                     <label for="password" class="form-label">Password: </label>
                     <input type="password" class="form-control" id="password" placeholder="Enter Password" name="password">
                 </div>
-
                 <div class="mb-3">
                     <label for="confirmPassword" class="form-label">Confirm Password: </label>
                     <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password" name="confirmPassword">
