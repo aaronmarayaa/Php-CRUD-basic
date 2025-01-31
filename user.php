@@ -9,7 +9,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
     $confirmPassword = $_POST['confirmPassword'] ?? null;
 
     $sqlStatement = $conn->prepare("
-        SELECT name, mobile, email, password WHERE email = ? 
+        SELECT name, mobile, email, password WHERE email = ?;
     ");
     $sqlStatement->bind_param("s", $email);
     $sqlStatement->execute();
