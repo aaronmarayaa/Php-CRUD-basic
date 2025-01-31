@@ -1,4 +1,7 @@
 <?php
+$passwordMismatch = false;
+$emailAlreadyExist = false;
+
 if($_SERVER['REQUEST_METHOD'] == "POST") {
     include 'connect.php';
 
@@ -15,6 +18,12 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
     $sqlStatement->execute();
     
     $result = $sqlStatement->get_result();
+
+    if ($confirmPassword !== $password) {
+        $passwordMismatch = true;
+    } elseif ($result->num_rows > 0) {
+        $emailAlreadyExist = true;
+    }
 }
 ?>
 
