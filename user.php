@@ -80,7 +80,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
             </div>
             <div class="mb-3">
                 <label for="confirmPassword" class="form-label">Confirm Password: </label>
-                <input type="confirmPassword" class="form-control" id="confirmPassword" placeholder="Confirm Password" name="confirmPassword">
+                <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password" name="confirmPassword">
             </div>
             <div class="text-center">
                 <button type="submit" class="btn btn-primary w-50" name="submit">Submit</button>
