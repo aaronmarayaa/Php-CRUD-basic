@@ -13,7 +13,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
     $confirmPassword = $_POST['confirmPassword'] ?? null;
 
     $sqlStatement = $conn->prepare("
-        SELECT name, mobile, email, password WHERE email = ?;
+        SELECT name, mobile, email, password FROM crud WHERE email = ?;
     ");
     $sqlStatement->bind_param("s", $email);
     $sqlStatement->execute();
@@ -61,7 +61,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
   <body>
     <main class="d-flex justify-content-center m-4">
         <div class="card w-50 p-4">
-            <form action="user.php" method="post ">
+            <form action="user.php" method="post">
                 <div class="mb-3">
                     <label for="name" class="form-label">Name: </label>
                     <input type="text" class="form-control" id="name" placeholder="Enter Name" name="name">
@@ -86,7 +86,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
                     <label for="confirmPassword" class="form-label">Confirm Password: </label>
                     <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password" name="confirmPassword">
                 </div>
-                
+
                 <div class="text-center">
                     <button type="submit" class="btn btn-primary w-50" name="submit">Submit</button>
                 </div>
