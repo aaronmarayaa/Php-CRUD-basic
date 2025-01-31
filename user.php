@@ -1,6 +1,7 @@
 <?php
 $passwordMismatch = false;
 $emailAlreadyExist = false;
+$isSuccessful = false;
 
 if($_SERVER['REQUEST_METHOD'] == "POST") {
     include 'connect.php';
@@ -23,6 +24,27 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
         $passwordMismatch = true;
     } elseif ($result->num_rows > 0) {
         $emailAlreadyExist = true;
+    } else {
+        try {
+            $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+            $sqlStatement = $conn->prepare("
+                INSERT INTO crud (name, mobile, email, password)
+                VALUES (?, ?, ?, ?);
+            ");
+
+            if(!$sqlStatement) {
+                throw new Exception("Preparation failed: " . $conn->error);
+            }
+
+            $sqlStatement->bind_param("ssss", $name, $mobile, $email, $password);
+            if($sqlStatement->execute()) { $isSuccessful = true; }
+        } catch (Exception $exception) {
+            error_log("Error: " . $exception->getMessage());
+            $isSuccessful = false;
+        } finally {
+            if(isset($sqlStatement)) $sqlStatement->close();
+            if(isset($conn)) $conn->close();
+        }
     }
 }
 ?>
