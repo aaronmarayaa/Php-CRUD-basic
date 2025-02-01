@@ -2,6 +2,7 @@
 $passwordMismatch = false;
 $emailAlreadyExist = false;
 $isSuccessful = false;
+$mobileNumberAlreadyExist = false;
 
 if($_SERVER['REQUEST_METHOD'] == "POST") {
     include 'connect.php';
@@ -13,9 +14,9 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
     $confirmPassword = $_POST['confirmPassword'] ?? null;
 
     $sqlStatement = $conn->prepare("
-        SELECT name, mobile, email, password FROM crud WHERE email = ?;
+        SELECT name, mobile, email, password FROM crud WHERE email = ? OR mobile = ?;
     ");
-    $sqlStatement->bind_param("s", $email);
+    $sqlStatement->bind_param("si", $email, $mobile);
     $sqlStatement->execute();
     
     $result = $sqlStatement->get_result();
@@ -23,7 +24,13 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
     if ($confirmPassword !== $password) {
         $passwordMismatch = true;
     } elseif ($result->num_rows > 0) {
-        $emailAlreadyExist = true;
+        if ($row = $result->fetch_assoc()) {
+            if ($row['mobile'] === $mobile) {
+                $mobileNumberAlreadyExist = true;
+            } elseif ($row['email'] == $email) {
+                $emailAlreadyExist = true;
+            }
+        }
     } else {
         try {
             $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
