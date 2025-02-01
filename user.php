@@ -90,6 +90,20 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
                     <input type="text" class="form-control" id="name" placeholder="Enter Name" name="name" required min="5">
                 </div>
 
+                <?php
+                    if($mobileNumberAlreadyExist) {
+                        echo '
+                            <p style="color: red;" id="errorMessage"><i><strong>Mobile number</strong> already exist!</i></p>
+
+                            <script>
+                                let alertElement = document.getElementById("errorMessage");
+                                setTimeout(function() {
+                                    alertElement.style.display = "none"
+                                }, 3500);
+                            </script>
+                        ';
+                    }
+                ?>
                 <div class="mb-3">
                     <label for="mobile" class="form-label">Mobile: </label>
                     <input type="number" class="form-control" id="mobile" placeholder="Enter Mobile" name="mobile" required min="11" max="11">
