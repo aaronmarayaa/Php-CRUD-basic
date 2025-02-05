@@ -106,7 +106,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
                 ?>
                 <div class="mb-3">
                     <label for="mobile" class="form-label">Mobile: </label>
-                    <input type="number" class="form-control" id="mobile" placeholder="Enter Mobile" name="mobile" required min="11" max="11">
+                    <input type="number" class="form-control" id="mobile" placeholder="Enter Mobile" name="mobile" required minlength="11" maxlength="11">
                 </div>
                 <?php
                     if($emailAlreadyExist) {
