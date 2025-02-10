@@ -43,7 +43,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
                 throw new Exception("Preparation failed: " . $conn->error);
             }
 
-            $sqlStatement->bind_param("ssss", $name, $mobile, $email, $password);
+            $sqlStatement->bind_param("ssss", $name, $mobile, $email, $hashedPassword);
             if($sqlStatement->execute()) { $isSuccessful = true; }
         } catch (Exception $exception) {
             error_log("Error: " . $exception->getMessage());
