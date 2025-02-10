@@ -68,7 +68,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST") {
   <?php
     if($isSuccessful) {
         echo '
-            <div class="alert alert-success fade" role="alert" id="successAlert">
+            <div class="alert alert-success" role="alert" id="successAlert">
                 Signed Up Successfully!
             </div>
 
