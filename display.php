@@ -10,7 +10,40 @@
   <body>
     <main>
         <div class="container m-3">
-            <button class="btn btn-primary"><a href="user.php" class="text-light text">Add user</a></button>
+            <button class="btn btn-primary m-3"><a href="user.php" class="text-light text-decoration-none">Add user</a></button>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Id</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Mobile</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Password</th>
+                </tr>
+              </thead>
+              <tbody>
+                <?php
+                  include 'connect.php';
+
+                  $sqlStatement = "
+                    SELECT id, name, email, mobile, password FROM crud;
+                  ";
+
+                  $result = $conn->query($sqlStatement);
+                  if($result->num_rows > 0) {
+                    while($row = $result->fetch_assoc()) {
+                      echo '<tr>';
+                        echo '<td>' . htmlspecialchars($row['id']) . "</td>";
+                        echo '<td>' . htmlspecialchars($row['name']) . "</td>";
+                        echo '<td>' . htmlspecialchars($row['mobile']) . "</td>";
+                        echo '<td>' . htmlspecialchars($row['email']) . "</td>";
+                        echo '<td>' . htmlspecialchars($row['password']) . "</td>";
+                      echo '</tr>';
+                    }
+                  }
+                ?>
+              </tbody>
+            </table>
         </div>
     </main>
   </body>
