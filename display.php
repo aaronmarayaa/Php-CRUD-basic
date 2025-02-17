@@ -9,9 +9,9 @@
   </head>
   <body>
     <main>
-        <div class="container m-3">
+        <div class="mx-5">
             <button class="btn btn-primary m-3"><a href="user.php" class="text-light text-decoration-none">Add user</a></button>
-            <table class="table">
+            <table class="table fs-6">
               <thead>
                 <tr>
                   <th scope="col">Id</th>
@@ -19,6 +19,7 @@
                   <th scope="col">Mobile</th>
                   <th scope="col">Email</th>
                   <th scope="col">Password</th>
+                  <th scope="col">Operation</th>
                 </tr>
               </thead>
               <tbody>
@@ -38,6 +39,10 @@
                         echo '<td>' . htmlspecialchars($row['mobile']) . "</td>";
                         echo '<td>' . htmlspecialchars($row['email']) . "</td>";
                         echo '<td>' . htmlspecialchars($row['password']) . "</td>";
+                        echo '<td>' .
+                          "<button class='btn btn-primary'>Update</button>
+                          <button class='btn btn-danger'>Delete</button>"
+                        . "</td>";
                       echo '</tr>';
                     }
                   }
