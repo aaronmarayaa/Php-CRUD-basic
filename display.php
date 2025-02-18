@@ -41,7 +41,11 @@
                         echo '<td>' . htmlspecialchars($row['password']) . "</td>";
                         echo '<td>' .
                           "<button class='btn btn-primary'>Update</button>
-                          <button class='btn btn-danger'>Delete</button>"
+                          <button class='btn btn-danger'>
+                            <a href='delete.php? deleteId=" . $row['id'] . "'class='text-decoration-none text-light'>
+                              Delete
+                            </a>
+                          </button>"
                         . "</td>";
                       echo '</tr>';
                     }
