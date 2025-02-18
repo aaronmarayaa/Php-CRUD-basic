@@ -7,6 +7,24 @@
 
     <title>Home</title>
   </head>
+  <?php
+    session_start();
+    if(isset($_SESSION['delete_success'])) {
+    echo "
+      <div class='alert alert-warning' id='warningAlert'>
+        Deletion Successful!
+      </div>
+
+      <script>
+          let alertElement = document.getElementById('warningAlert');
+          setTimeout(function() {
+              alertElement.style.display = 'none';
+          }, 3500);
+      </script>
+    ";
+      unset($_SESSION['delete_success']);
+    }
+  ?>
   <body>
     <main>
         <div class="mx-5">
