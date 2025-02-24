@@ -58,7 +58,12 @@
                         echo '<td>' . htmlspecialchars($row['email']) . "</td>";
                         echo '<td>' . htmlspecialchars($row['password']) . "</td>";
                         echo '<td>' .
-                          "<button class='btn btn-primary'>Update</button>
+                          "<button class='btn btn-primary '>
+                            <a href='update.php? updateId = " . $row['id'] . "' class='text-decoration-none'>
+                              Update
+                            </a>
+                          </button>
+
                           <button class='btn btn-danger'>
                             <a href='delete.php? deleteId=" . $row['id'] . "'class='text-decoration-none text-light'>
                               Delete
