@@ -59,7 +59,7 @@
                         echo '<td>' . htmlspecialchars($row['password']) . "</td>";
                         echo '<td>' .
                           "<button class='btn btn-primary '>
-                            <a href='update.php? updateId = " . $row['id'] . "' class='text-decoration-none'>
+                            <a href='update.php? updateId=" . $row['id'] . "'class='text-decoration-none text-light'>
                               Update
                             </a>
                           </button>
