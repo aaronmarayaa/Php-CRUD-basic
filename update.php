@@ -66,7 +66,7 @@
   <body>
     <main class="d-flex justify-content-center m-4">
         <div class="card w-50 p-4">
-            <form action="update.php" method="post">
+            <form method="post">
                 <div class="mb-3">
                     <label for="name" class="form-label">Name: </label>
                     <input type="text" class="form-control" id="name" placeholder="Enter Name" name="name" required min="5">
